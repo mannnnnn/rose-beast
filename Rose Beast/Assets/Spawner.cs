@@ -15,12 +15,12 @@ public class Spawner : MonoBehaviour
     {
         tile = GetComponent<TileBound>();
          tilemap = FindObjectOfType<Tilemap>();
-        tile.UpdateSlider(0, spawnEveryMultipleOf, Color.blue);
+        tile.UpdateSlider(0, spawnEveryMultipleOf, Color.green);
         tile.onAgeChanged += AgeChanged;
     }
 
     public void AgeChanged(){
-        tile.UpdateSlider(tile.age % spawnEveryMultipleOf, spawnEveryMultipleOf, Color.blue);
+        tile.UpdateSlider(tile.age % spawnEveryMultipleOf, spawnEveryMultipleOf, Color.green);
         if(tile.age > 0 && tile.age % spawnEveryMultipleOf == 0){
             TrySpawn();
         }
@@ -58,7 +58,6 @@ public class Spawner : MonoBehaviour
              foundDir = Vector2.down + Vector2.left;
         }
        
-       UnityEngine.Debug.Log(foundDir + "is our direction!");
        if(foundDir != Vector2.zero){
              SpawnOnDirection(foundDir);
        }
@@ -67,11 +66,9 @@ public class Spawner : MonoBehaviour
 
     public bool IsValidSpawn(GameObject objOnTile){
         if(objOnTile == null) {
-            UnityEngine.Debug.Log("spawn point is empty!");
             return true;
         }
         if(objOnTile.GetComponent<Blocker>() != null) {
-             UnityEngine.Debug.Log("spawn point is blocked!");
             return false;
         }
         return true;

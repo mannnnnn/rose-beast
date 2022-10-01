@@ -16,6 +16,9 @@ public class ChimeraController : MonoBehaviour
     public GameObject instructions;
     
     public static ChimeraController Instance;
+    public GameObject MovementLine;
+
+    public List<Vector3Int> MoverPaths = new List<Vector3Int>(); 
 
     void Awake()
     {
@@ -53,15 +56,17 @@ public class ChimeraController : MonoBehaviour
     }
 
     public void TimesUp(){
+         MoverPaths.Clear();
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
             tile.UpdateAge();
         }
-        UnityEngine.Debug.Log("Go!");
+       
     }
 
     public GameObject FindObjectOnTile(Vector3 myPosition, Vector2 dir){
-
-        UnityEngine.Debug.Log(myPosition + "," + dir + " is where I'm trying to find a tile");
+        if(tilemap == null){
+            tilemap = FindObjectOfType<Tilemap>();
+        }
         Vector3Int nextCell = tilemap.WorldToCell((Vector2)myPosition) + new Vector3Int((int)dir.x, (int)dir.y, 0);
         Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(nextCell), 0);
 

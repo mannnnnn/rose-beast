@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Defender : MonoBehaviour
 {
@@ -8,12 +9,14 @@ public class Defender : MonoBehaviour
     public int MaxHealth = 1;
     public GameObject Drop;
     private TileBound tile;
+    private Tilemap tilemap;
 
     public int meat = 0; //number of exp per hit
 
     void Start()
     {
         tile = GetComponent<TileBound>();
+        tilemap = FindObjectOfType<Tilemap>();
     }
 
     public void TakeDamage(int damageAmt, Attacker attacker){
@@ -31,7 +34,10 @@ public class Defender : MonoBehaviour
     }
 
     public void Die(){
-        if(Drop != null) Instantiate(Drop, this.transform.parent);
+        if(Drop != null) {
+            GameObject droppedSpawn = Instantiate(Drop, this.transform.parent);
+            droppedSpawn.transform.position = this.transform.position;
+        }
         Destroy(this.gameObject);
     }
 }
