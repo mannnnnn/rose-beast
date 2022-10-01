@@ -18,9 +18,16 @@ public class PlayerMovement : MonoBehaviour
         moveInput = input.Get<Vector2>();
     }
 
+    void OnFire(InputValue input){
+        if(ChimeraController.Instance.debug){
+            ChimeraController.Instance.TimesUp();
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if(moveInput.magnitude > 0f) {
             if(Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y)){
                 if(moveInput.x > 0){

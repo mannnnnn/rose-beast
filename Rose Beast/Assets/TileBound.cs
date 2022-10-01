@@ -21,10 +21,18 @@ public class TileBound : MonoBehaviour
          transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(this.transform.position));
     }
 
-    public void UpdateSlider(int fill, int max){
+    public void UpdateSlider(int fill, int max, Color color){
         if(slider != null){
             slider.value = fill;
             slider.maxValue = max;
+            UpdateSliderColor(color);
+        }
+    }
+
+    public void UpdateSliderColor(Color color){
+        if(slider != null){
+            Image fillProbably = slider.GetComponentInChildren<Image>();
+            fillProbably.color = color;
         }
     }
 

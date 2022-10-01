@@ -16,16 +16,15 @@ public class Eater : MonoBehaviour
     {
         tile = GetComponent<TileBound>();
         nextRequiredGrowingEXPLevel = requiredGrowingEXPLevels[0];
-        tile.UpdateSlider(currentEXP-lastRequiredGrowingEXPLevel, nextRequiredGrowingEXPLevel-lastRequiredGrowingEXPLevel);
     }
 
     public void GetEXP(int expGain){
         currentEXP += expGain;
         if(currentEXP>=nextRequiredGrowingEXPLevel){
-            tile.UpdateSlider(0, nextRequiredGrowingEXPLevel);
+            tile.UpdateSlider(0, nextRequiredGrowingEXPLevel, Color.white);
             Evolve();
         } else {
-            tile.UpdateSlider(currentEXP-lastRequiredGrowingEXPLevel, nextRequiredGrowingEXPLevel-lastRequiredGrowingEXPLevel);
+            tile.UpdateSlider(currentEXP-lastRequiredGrowingEXPLevel, nextRequiredGrowingEXPLevel-lastRequiredGrowingEXPLevel, Color.white);
         }
     }
 

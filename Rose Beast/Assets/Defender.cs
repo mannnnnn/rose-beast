@@ -14,7 +14,6 @@ public class Defender : MonoBehaviour
     void Start()
     {
         tile = GetComponent<TileBound>();
-        tile.UpdateSlider(CurrentHealth, MaxHealth);
     }
 
     public void TakeDamage(int damageAmt, Attacker attacker){
@@ -22,7 +21,7 @@ public class Defender : MonoBehaviour
         if(CurrentHealth<=0){
             Die();
         } else {
-            tile.UpdateSlider(CurrentHealth, MaxHealth);
+            tile.UpdateSlider(CurrentHealth, MaxHealth, Color.red + Color.white/4 + Color.blue/4);
         }
 
         Eater eater = attacker.GetComponent<Eater>();

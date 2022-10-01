@@ -6,12 +6,15 @@ using UnityEngine.Tilemaps;
 
 public class ChimeraController : MonoBehaviour
 {
+    public bool debug = false;
+    
     public TextMeshPro TimerLabel;
     public int Timer = 10;
      
     private bool gameRunning = true;
     private Tilemap tilemap;
-
+    public GameObject instructions;
+    
     public static ChimeraController Instance;
 
     void Awake()

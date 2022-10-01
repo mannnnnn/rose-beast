@@ -13,12 +13,12 @@ public class Rose : MonoBehaviour
     {
         tile = GetComponent<TileBound>();
         nextRequiredGrowingAge = requiredGrowingAges[0];
-        tile.UpdateSlider(0, nextRequiredGrowingAge);
+        tile.UpdateSlider(0, nextRequiredGrowingAge, Color.white);
     }
 
     void FixedUpdate(){
         if(nextRequiredGrowingAge >= 0){
-             tile.UpdateSlider(tile.age, nextRequiredGrowingAge);
+             tile.UpdateSlider(tile.age, nextRequiredGrowingAge, Color.white);
             if(tile.age >= nextRequiredGrowingAge){
                 Grow();
                 if(requiredGrowingAges.IndexOf(nextRequiredGrowingAge) < requiredGrowingAges.Count-1){
@@ -29,7 +29,7 @@ public class Rose : MonoBehaviour
             
             } 
         } else {
-            tile.UpdateSlider(0,1);
+            tile.UpdateSlider(0,1, Color.white);
         }
 
        
