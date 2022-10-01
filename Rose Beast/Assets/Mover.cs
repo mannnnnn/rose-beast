@@ -23,7 +23,7 @@ public class Mover : MonoBehaviour {
 
     public bool CanMove(Vector2 dir){
         Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
-        return ChimeraController.Instance.FindObjectOnTile(nextCell) == null;
+        return ChimeraController.Instance.FindObjectOnTile(nextCell) == null || ChimeraController.Instance.FindObjectOnTile(nextCell).GetComponent<Blocker>() == null;
     }
 
     IEnumerator Moving(Vector2 dir)

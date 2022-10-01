@@ -50,6 +50,10 @@ public class ChimeraController : MonoBehaviour
     }
 
     public void TimesUp(){
+        foreach(TileBound tile in FindObjectsOfType<TileBound>()){
+            UnityEngine.Debug.Log("Tile aged" + tile.name);
+            tile.age++;
+        }
         UnityEngine.Debug.Log("Go!");
     }
 
