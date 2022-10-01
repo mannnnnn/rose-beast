@@ -17,7 +17,6 @@ public class Spawner : MonoBehaviour
         tile = GetComponent<TileBound>();
          tilemap = FindObjectOfType<Tilemap>();
         if(useSlider) tile.UpdateSlider(0, spawnEveryMultipleOf, Color.green);
-        tile.onAgeChanged += AgeChanged;
     }
 
     public void AgeChanged(){

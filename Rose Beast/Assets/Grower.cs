@@ -12,10 +12,9 @@ public class Grower : MonoBehaviour
     {
         tile = GetComponent<TileBound>();
         tile.UpdateSlider(0, growingAge, Color.white);
-        tile.onAgeChanged += AgeChanged;
     }
 
-    private void AgeChanged(){
+    public void AgeChanged(){
         if(growingAge >= 0){
              tile.UpdateSlider(tile.age, growingAge, Color.white);
             if(tile.age >= growingAge){

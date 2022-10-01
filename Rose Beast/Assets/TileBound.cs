@@ -10,7 +10,6 @@ public class TileBound : MonoBehaviour
     private Tilemap tilemap;
     private Slider slider;
     
-    public event Action onAgeChanged;
     public int age; //how many 10 second intervals have I been alive for?
 
     void Awake(){
@@ -40,8 +39,6 @@ public class TileBound : MonoBehaviour
 
     public void UpdateAge(){
         age++;
-        if(onAgeChanged == null) return;
-        onAgeChanged();
     }
     
 }

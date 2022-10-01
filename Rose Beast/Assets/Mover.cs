@@ -24,15 +24,13 @@ public class Mover : MonoBehaviour {
     public void Start(){
         tilemap = FindObjectOfType<Tilemap>();
         tile = FindObjectOfType<TileBound>();
-        tile.onAgeChanged += ExecuteMove;
         movementColor = Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
-        PlanMove();
     }
 
-    
     List<LineRenderer> lines = new List<LineRenderer>();
     public List<Vector2> plannedDirections = new List<Vector2>();
     public void PlanMove(){
+        if(tile == null || tilemap == null) return;
         if(movementType == MovementType.NONE) return;
         Vector3Int lastCell =  tilemap.WorldToCell(this.transform.position);
         Vector2 lastDir = Vector2.zero;
@@ -92,19 +90,18 @@ public class Mover : MonoBehaviour {
     }
 
     void OnDestroy() {
-        tile.onAgeChanged -= ExecuteMove;
         if(moving != null) StopCoroutine(moving);
     }
 
     IEnumerator ExecuteMoveOnDelay(){
         for(int i = 0; i<plannedDirections.Count; i++){
            Vector2 step = plannedDirections[i];
-            if(!Move(step)){
+            if(!Move(step, true)){
                 //end
                 i = plannedDirections.Count;
                 continue;
             }
-            yield return new WaitForSeconds(movementDelay+0.02f);
+            yield return new WaitForSeconds(movementDelay/2+0.01f);
         }
         plannedDirections.Clear();
         for(int i = 0; i<lines.Count;)
@@ -112,18 +109,17 @@ public class Mover : MonoBehaviour {
             Destroy(lines[0].gameObject);
             lines.Remove(lines[0]);
         } 
-        PlanMove();
     }
 
 
-    public bool Move(Vector2 dir){
+    public bool Move(Vector2 dir, bool instant = false){
         Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
         GameObject foundObj = ChimeraController.Instance.FindObjectOnTile(nextCell);
         if(CanMove(foundObj) && !isMoving){
-            StartCoroutine(Moving(dir));
+            StartCoroutine(Moving(dir,instant));
             return true;
         } else if(!CanMove(foundObj) && !isMoving){
-            StartCoroutine(Blocked(dir));
+            StartCoroutine(Blocked(dir,instant));
 
             if(this.GetComponent<PlayerMovement>() != null){
                 //this is the beast, allow other actions
@@ -143,7 +139,7 @@ public class Mover : MonoBehaviour {
         }
     }
 
-    IEnumerator Moving(Vector2 dir)
+    IEnumerator Moving(Vector2 dir, bool instant)
     {
        isMoving = true;
        float origZ = transform.position.z;
@@ -154,7 +150,7 @@ public class Mover : MonoBehaviour {
        float elapsedTime = 0;
         while(elapsedTime < movementDelay){
             transform.position = Vector2.Lerp(tilemap.GetCellCenterWorld(origPosition), tilemap.GetCellCenterWorld(nextCell), elapsedTime/movementDelay);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * (instant?2:1);
             yield return null;
         }
 
@@ -164,7 +160,7 @@ public class Mover : MonoBehaviour {
     }
 
 
-    IEnumerator Blocked(Vector2 dir)
+    IEnumerator Blocked(Vector2 dir, bool instant)
     {
        isMoving = true;
        float origZ = transform.position.z;
@@ -180,7 +176,7 @@ public class Mover : MonoBehaviour {
         Vector3 halfPos = transform.position;
          while(elapsedTime < movementDelay){
             transform.position = Vector2.Lerp(halfPos, tilemap.GetCellCenterWorld(origPosition), elapsedTime/movementDelay/2);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * (instant?2:1);
             yield return null;
         }
 

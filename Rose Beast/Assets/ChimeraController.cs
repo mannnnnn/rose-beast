@@ -46,7 +46,7 @@ public class ChimeraController : MonoBehaviour
 
             if(Timer <= 0){
                 Timer = 11;
-                TimesUp();
+                StartCoroutine(TimesUp());
             }
             yield return new WaitForSeconds(1);
             Timer--;
@@ -55,12 +55,41 @@ public class ChimeraController : MonoBehaviour
         
     }
 
-    public void TimesUp(){
-         MoverPaths.Clear();
+    public IEnumerator TimesUp(){
+         
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
             tile.UpdateAge();
         }
+
+        //move all creatures
+        Mover[] movers = FindObjectsOfType<Mover>();
+        foreach(Mover mover in movers){
+            mover.ExecuteMove();
+        }
+
+        yield return new WaitForSeconds(0.2f); //let all walks finish (can't multithread in webGL)
+        MoverPaths.Clear();
+
+        //grow any creatures
+        Grower[] growers = FindObjectsOfType<Grower>();
+        foreach(Grower grower in growers){
+            grower.AgeChanged();
+        }
+
+        yield return new WaitForSeconds(0.1f); //let things grow properly
+
+        //spawn creatures
+        Spawner[] spawners = FindObjectsOfType<Spawner>();
+        foreach(Spawner spawner in spawners){
+            spawner.AgeChanged();
+        }
+        yield return new WaitForSeconds(0.05f); //let things spawn properly
        
+       //Plan next move
+       movers = FindObjectsOfType<Mover>(); //this can change, so recall
+        foreach(Mover mover in movers){
+            mover.PlanMove();
+        }
     }
 
     public GameObject FindObjectOnTile(Vector3 myPosition, Vector2 dir){
@@ -79,7 +108,7 @@ public class ChimeraController : MonoBehaviour
 
     public GameObject FindObjectOnTile(Vector3Int tile){
 
-        Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(tile), 0);
+        Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(tile), 1);
 
         if(col == null){
             return null;
