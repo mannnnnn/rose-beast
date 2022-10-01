@@ -9,18 +9,19 @@ public class Spawner : MonoBehaviour
     private Tilemap tilemap;
     public int spawnEveryMultipleOf = 1;
     public GameObject spawn;
+    public bool useSlider = true;
     
 
     void Start()
     {
         tile = GetComponent<TileBound>();
          tilemap = FindObjectOfType<Tilemap>();
-        tile.UpdateSlider(0, spawnEveryMultipleOf, Color.green);
+        if(useSlider) tile.UpdateSlider(0, spawnEveryMultipleOf, Color.green);
         tile.onAgeChanged += AgeChanged;
     }
 
     public void AgeChanged(){
-        tile.UpdateSlider(tile.age % spawnEveryMultipleOf, spawnEveryMultipleOf, Color.green);
+         if(useSlider) tile.UpdateSlider(tile.age % spawnEveryMultipleOf, spawnEveryMultipleOf, Color.green);
         if(tile.age > 0 && tile.age % spawnEveryMultipleOf == 0){
             TrySpawn();
         }

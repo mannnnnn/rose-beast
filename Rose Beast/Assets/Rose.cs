@@ -2,43 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rose : MonoBehaviour
+public class Rose : Grower
 {
-    private TileBound tile;
-    public List<Sprite> growingSprites = new List<Sprite>();
+   public List<Sprite> growingSprites = new List<Sprite>();
     public List<int> requiredGrowingAges = new List<int>();
-    private int nextRequiredGrowingAge;
 
     void Start()
     {
         tile = GetComponent<TileBound>();
-        nextRequiredGrowingAge = requiredGrowingAges[0];
-        tile.UpdateSlider(0, nextRequiredGrowingAge, Color.white);
-        tile.onAgeChanged += AgeChanged;
+        growingAge = requiredGrowingAges[0];
+        tile.UpdateSlider(0, growingAge, Color.white);
     }
 
-    private void AgeChanged(){
-        if(nextRequiredGrowingAge >= 0){
-             tile.UpdateSlider(tile.age, nextRequiredGrowingAge, Color.white);
-            if(tile.age >= nextRequiredGrowingAge){
-                Grow();
-                if(requiredGrowingAges.IndexOf(nextRequiredGrowingAge) < requiredGrowingAges.Count-1){
-                    nextRequiredGrowingAge = requiredGrowingAges[requiredGrowingAges.IndexOf(nextRequiredGrowingAge)];
-                } else {
-                    nextRequiredGrowingAge = -1;
-                }
-            
-            } 
-        } else {
-            tile.UpdateSlider(0,1, Color.white);
-        }
-    }
-
-    void Grow(){
+    public override void Grow(){
         FindObjectOfType<BoundsController>().ExpandBounds();
         GetComponentInChildren<SpriteRenderer>().sprite = growingSprites[growingSprites.IndexOf(GetComponentInChildren<SpriteRenderer>().sprite)+1];
+   
+        if(requiredGrowingAges.IndexOf(growingAge) < requiredGrowingAges.Count-1){
+            growingAge = requiredGrowingAges[requiredGrowingAges.IndexOf(growingAge)];
+        } else {
+            growingAge = -1;
+        }
     }
-
-    
 
 }
