@@ -1574,6 +1574,7 @@ MonoBehaviour:
   Timer: 10
   instructions: {fileID: 1416115105}
   MovementLine: {fileID: 8376038199588979545, guid: ff62d3340e8a8794893e2e1db64b4acd, type: 3}
+  MoverPaths: []
 --- !u!4 &542669887
 Transform:
   m_ObjectHideFlags: 0

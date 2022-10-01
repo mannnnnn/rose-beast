@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementType: 1
   tilesPerCycle: 2
+  plannedDirections: []
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0

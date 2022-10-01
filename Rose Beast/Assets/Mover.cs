@@ -25,7 +25,7 @@ public class Mover : MonoBehaviour {
         tilemap = FindObjectOfType<Tilemap>();
         tile = FindObjectOfType<TileBound>();
         tile.onAgeChanged += ExecuteMove;
-        movementColor = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
+        movementColor = Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
         PlanMove();
     }
 
@@ -92,6 +92,7 @@ public class Mover : MonoBehaviour {
     }
 
     void OnDestroy() {
+        tile.onAgeChanged -= ExecuteMove;
         if(moving != null) StopCoroutine(moving);
     }
 
