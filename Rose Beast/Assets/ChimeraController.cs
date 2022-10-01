@@ -57,6 +57,18 @@ public class ChimeraController : MonoBehaviour
         UnityEngine.Debug.Log("Go!");
     }
 
+    public GameObject FindObjectOnTile(Vector3 myPosition, Vector2 dir){
+
+        Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
+        Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(nextCell), 0);
+
+        if(col == null){
+            return null;
+        } else {
+            return col.gameObject;
+        }
+    }
+
     public GameObject FindObjectOnTile(Vector3Int tile){
 
         Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(tile), 0);

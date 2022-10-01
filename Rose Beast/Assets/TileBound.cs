@@ -10,10 +10,14 @@ public class TileBound : MonoBehaviour
     private Slider slider;
     public int age; //how many 10 second intervals have I been alive for?
 
+
+    void Awake(){
+         slider = transform.GetComponentInChildren<Slider>();
+    }
+    
     void Start()
     {
-         tilemap = FindObjectOfType<Tilemap>();
-         slider = transform.GetComponentInChildren<Slider>();
+          tilemap = FindObjectOfType<Tilemap>();
          transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(this.transform.position));
     }
 

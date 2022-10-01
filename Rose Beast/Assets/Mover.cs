@@ -14,16 +14,28 @@ public class Mover : MonoBehaviour {
     }
 
     public void Move(Vector2 dir){
-        if(CanMove(dir) && !isMoving){
+        Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
+        GameObject foundObj = ChimeraController.Instance.FindObjectOnTile(nextCell);
+        if(CanMove(foundObj) && !isMoving){
             StartCoroutine(Moving(dir));
-        } else if(!CanMove(dir)){
+        } else if(!CanMove(foundObj) && !isMoving){
             StartCoroutine(Blocked(dir));
+
+            if(this.GetComponent<PlayerMovement>() != null){
+                //this is the beast, allow other actions
+                PlayerInteraction(foundObj);
+            }
         }
     }
 
-    public bool CanMove(Vector2 dir){
-        Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
-        return ChimeraController.Instance.FindObjectOnTile(nextCell) == null || ChimeraController.Instance.FindObjectOnTile(nextCell).GetComponent<Blocker>() == null;
+    public bool CanMove(GameObject obj){
+        return obj == null || obj.GetComponent<Blocker>() == null;
+    }
+
+    public void PlayerInteraction(GameObject hitObject){
+        if(hitObject.GetComponent<Defender>()){
+            this.GetComponent<Attacker>().Attack(hitObject);
+        }
     }
 
     IEnumerator Moving(Vector2 dir)
