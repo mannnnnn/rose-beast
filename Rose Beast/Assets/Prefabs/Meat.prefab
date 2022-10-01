@@ -299,7 +299,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 7
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -330,8 +330,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706259981715885020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.9, y: -143.4, z: -5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -403,10 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 3
-  MaxHealth: 3
+  CurrentHealth: 10
+  MaxHealth: 10
   Drop: {fileID: 0}
-  meat: 0
+  meat: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0

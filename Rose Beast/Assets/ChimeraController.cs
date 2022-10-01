@@ -54,15 +54,15 @@ public class ChimeraController : MonoBehaviour
 
     public void TimesUp(){
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
-            UnityEngine.Debug.Log("Tile aged" + tile.name);
-            tile.age++;
+            tile.UpdateAge();
         }
         UnityEngine.Debug.Log("Go!");
     }
 
     public GameObject FindObjectOnTile(Vector3 myPosition, Vector2 dir){
 
-        Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
+        UnityEngine.Debug.Log(myPosition + "," + dir + " is where I'm trying to find a tile");
+        Vector3Int nextCell = tilemap.WorldToCell((Vector2)myPosition) + new Vector3Int((int)dir.x, (int)dir.y, 0);
         Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(nextCell), 0);
 
         if(col == null){

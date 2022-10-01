@@ -14,9 +14,10 @@ public class Rose : MonoBehaviour
         tile = GetComponent<TileBound>();
         nextRequiredGrowingAge = requiredGrowingAges[0];
         tile.UpdateSlider(0, nextRequiredGrowingAge, Color.white);
+        tile.onAgeChanged += AgeChanged;
     }
 
-    void FixedUpdate(){
+    private void AgeChanged(){
         if(nextRequiredGrowingAge >= 0){
              tile.UpdateSlider(tile.age, nextRequiredGrowingAge, Color.white);
             if(tile.age >= nextRequiredGrowingAge){
@@ -31,8 +32,6 @@ public class Rose : MonoBehaviour
         } else {
             tile.UpdateSlider(0,1, Color.white);
         }
-
-       
     }
 
     void Grow(){

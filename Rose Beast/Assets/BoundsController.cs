@@ -6,6 +6,7 @@ public class BoundsController : MonoBehaviour
 {
 
     public List<WallBounds> bounds = new List<WallBounds>();
+     public List<GameObject> areas = new List<GameObject>();
     public int unlockedBounds = 1;
 
     public void ExpandBounds()
@@ -13,6 +14,7 @@ public class BoundsController : MonoBehaviour
         unlockedBounds++;
         bounds[unlockedBounds-1].gameObject.SetActive(true);
         bounds[unlockedBounds-2].RemoveBounds();
+        areas[unlockedBounds-1].gameObject.SetActive(true);
         StartCoroutine(MoveTimerUp());
 
         if(ChimeraController.Instance.instructions.gameObject.activeSelf){
