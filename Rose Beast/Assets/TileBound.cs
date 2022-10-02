@@ -9,6 +9,7 @@ public class TileBound : MonoBehaviour
 { 
     private Tilemap tilemap;
     private Slider slider;
+    public Color unitColor;
     
     public int age; //how many 10 second intervals have I been alive for?
 
@@ -18,6 +19,7 @@ public class TileBound : MonoBehaviour
     
     void Start()
     {
+        unitColor = UnityEngine.Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
           tilemap = FindObjectOfType<Tilemap>();
          transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(this.transform.position));
     }

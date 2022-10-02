@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8c1ff440adc87459468d980b2c6a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitColor: {r: 0, g: 0, b: 0, a: 0}
   age: 0
 --- !u!61 &7265534899535542268
 BoxCollider2D:
@@ -192,7 +193,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1287251467, guid: cc49d795245ed0a459f4356aa0cac6a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

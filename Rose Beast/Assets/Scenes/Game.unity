@@ -329,6 +329,7 @@ Transform:
   m_Children:
   - {fileID: 3792260}
   - {fileID: 60619736}
+  - {fileID: 857140253}
   - {fileID: 3201508533716078795}
   m_Father: {fileID: 1758449836}
   m_RootOrder: 1
@@ -726,7 +727,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c021ecdbac9f827428d5346028b48959, type: 3}
   m_Color: {r: 0.043387327, g: 0.05984381, b: 0.122641504, a: 1}
   m_FlipX: 0
@@ -1359,7 +1360,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!224 &392859328
 RectTransform:
@@ -1576,6 +1577,7 @@ MonoBehaviour:
   Timer: 10
   instructions: {fileID: 1416115105}
   MovementLine: {fileID: 8376038199588979545, guid: ff62d3340e8a8794893e2e1db64b4acd, type: 3}
+  AttackZone: {fileID: 344529407747082274, guid: ce52102a298e1bb47925b30d0e7f2a92, type: 3}
   MoverPaths: []
 --- !u!4 &542669887
 Transform:
@@ -3678,6 +3680,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7265534899535542269, guid: a115eaa4433d2964698fd4197024bfdc, type: 3}
   m_PrefabInstance: {fileID: 857090546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &857140252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6840187}
+    m_Modifications:
+    - target: {fileID: 5272022822547051335, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272022822547051335, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885020, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_Name
+      value: Stag
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 194.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -114.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+--- !u!4 &857140253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8706259981715885023, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+  m_PrefabInstance: {fileID: 857140252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &919649071
 GameObject:
@@ -6674,6 +6746,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAmt: 1
+  AttackRange: 1
+  eatsMeat: 0
 --- !u!114 &1624413739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6686,8 +6760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 1
-  MaxHealth: 1
+  CurrentHealth: 5000
+  MaxHealth: 5000
   Drop: {fileID: 0}
   meat: 0
 --- !u!114 &1624413740
@@ -10945,7 +11019,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a03992f50b29d3c4f90a3a4218a4603f, type: 3}
   m_Color: {r: 0.043387327, g: 0.05984381, b: 0.122641504, a: 1}
   m_FlipX: 0
@@ -11439,6 +11513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8c1ff440adc87459468d980b2c6a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitColor: {r: 0, g: 0, b: 0, a: 0}
   age: 0
 --- !u!4 &3201508533716078795
 Transform:
@@ -11455,7 +11530,7 @@ Transform:
   - {fileID: 3201508534312181850}
   - {fileID: 4678218318232472764}
   m_Father: {fileID: 6840187}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3201508533716078796
 MonoBehaviour:
@@ -11469,7 +11544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae9cd81d3e2a294bbf2ed75a08616eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEveryMultipleOf: 1
+  spawnEveryMultipleOf: 2
   spawn: {fileID: 8706259981715885020, guid: eec329f95555dbd4480cf7442fab353a, type: 3}
   useSlider: 1
 --- !u!1 &3201508534312181849

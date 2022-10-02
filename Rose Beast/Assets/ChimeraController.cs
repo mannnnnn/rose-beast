@@ -17,6 +17,7 @@ public class ChimeraController : MonoBehaviour
     
     public static ChimeraController Instance;
     public GameObject MovementLine;
+    public GameObject AttackZone;
 
     public List<Vector3Int> MoverPaths = new List<Vector3Int>(); 
 
@@ -60,6 +61,13 @@ public class ChimeraController : MonoBehaviour
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
             tile.UpdateAge();
         }
+        //let all creatures attack if primed
+        Attacker[] attackers = FindObjectsOfType<Attacker>();
+        foreach(Attacker attacker in attackers){
+            if(attacker != null) {
+                attacker.AttackWithinRange();
+            }
+        }
 
         //move all creatures
         Mover[] movers = FindObjectsOfType<Mover>();
@@ -85,6 +93,13 @@ public class ChimeraController : MonoBehaviour
         }
         yield return new WaitForSeconds(0.05f); //let things spawn properly
        
+        //let all creatures show their attack range
+        attackers = FindObjectsOfType<Attacker>();
+        foreach(Attacker attacker in attackers){
+            if(attacker != null) attacker.ShowRange();
+        }
+
+
        //Plan next move
        movers = FindObjectsOfType<Mover>(); //this can change, so recall
         foreach(Mover mover in movers){
@@ -108,7 +123,7 @@ public class ChimeraController : MonoBehaviour
 
     public GameObject FindObjectOnTile(Vector3Int tile){
 
-        Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(tile), 1);
+        Collider2D col = Physics2D.OverlapCircle(tilemap.GetCellCenterWorld(tile), 0);
 
         if(col == null){
             return null;

@@ -317,9 +317,9 @@ GameObject:
   - component: {fileID: 8703680181047312846}
   - component: {fileID: 7909003600596725639}
   - component: {fileID: 3120214136856505794}
-  - component: {fileID: 4005759743305369680}
+  - component: {fileID: 1389469372696229489}
   m_Layer: 0
-  m_Name: Deer
+  m_Name: Keeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 5
-  MaxHealth: 5
+  CurrentHealth: 20
+  MaxHealth: 20
   Drop: {fileID: 8706259981715885020, guid: de2fcb64e110b6d4e9f04cc3fe1d58d9, type: 3}
   meat: 0
 --- !u!114 &3120214136856505794
@@ -425,7 +425,7 @@ MonoBehaviour:
   movementType: 1
   tilesPerCycle: 2
   plannedDirections: []
---- !u!114 &4005759743305369680
+--- !u!114 &1389469372696229489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -434,12 +434,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8706259981715885020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06961c7ee34b02446a61cbee8a18f978, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d6cb13c9636745428a34f6e48eebb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextForm: {fileID: 8706259981715885020, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
-  growingAge: 5
-  useSlider: 0
+  DamageAmt: 2
+  AttackRange: 1
+  eatsMeat: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +513,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b5fdbb18a2eff5b4c8671f184b950c7c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d5fa90905d3a91438aa92c731396d26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -317,6 +317,8 @@ GameObject:
   - component: {fileID: 8703680181047312846}
   - component: {fileID: 7909003600596725639}
   - component: {fileID: 3120214136856505794}
+  - component: {fileID: 1389469372696229489}
+  - component: {fileID: 2971610551887111551}
   m_Layer: 0
   m_Name: Stag
   m_TagString: Untagged
@@ -353,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8c1ff440adc87459468d980b2c6a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitColor: {r: 0, g: 0, b: 0, a: 0}
   age: 0
 --- !u!61 &8706259981715885021
 BoxCollider2D:
@@ -423,6 +426,36 @@ MonoBehaviour:
   movementType: 1
   tilesPerCycle: 2
   plannedDirections: []
+--- !u!114 &1389469372696229489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706259981715885020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6cb13c9636745428a34f6e48eebb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmt: 1
+  AttackRange: 1
+  eatsMeat: 0
+--- !u!114 &2971610551887111551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706259981715885020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06961c7ee34b02446a61cbee8a18f978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextForm: {fileID: 8706259981715885020, guid: f9df6859add82024cb1c534d7dc05b6b, type: 3}
+  growingAge: 5
+  useSlider: 0
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,16 +7,17 @@ public class Grower : MonoBehaviour
     protected TileBound tile;
     public GameObject nextForm;
     public int growingAge;
+    public bool useSlider = true;
 
     void Start()
     {
         tile = GetComponent<TileBound>();
-        tile.UpdateSlider(0, growingAge, Color.white);
+        if(useSlider)tile.UpdateSlider(0, growingAge, Color.white);
     }
 
     public void AgeChanged(){
         if(growingAge >= 0){
-             tile.UpdateSlider(tile.age, growingAge, Color.white);
+            if(useSlider)tile.UpdateSlider(tile.age, growingAge, Color.white);
             if(tile.age >= growingAge){
                 Grow();
             } 

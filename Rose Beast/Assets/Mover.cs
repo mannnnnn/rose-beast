@@ -11,7 +11,7 @@ public class Mover : MonoBehaviour {
 
     private Tilemap tilemap;
     private TileBound tile;
-    private Color movementColor;
+   
 
     public enum MovementType{
         NONE,
@@ -24,7 +24,6 @@ public class Mover : MonoBehaviour {
     public void Start(){
         tilemap = FindObjectOfType<Tilemap>();
         tile = FindObjectOfType<TileBound>();
-        movementColor = Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
     }
 
     List<LineRenderer> lines = new List<LineRenderer>();
@@ -51,8 +50,8 @@ public class Mover : MonoBehaviour {
             Vector3Int nextCell = lastCell + new Vector3Int((int)nextDir.x, (int)nextDir.y, 0);
             pathSegment.SetPosition(0, tilemap.GetCellCenterWorld(lastCell));
             pathSegment.SetPosition(1, tilemap.GetCellCenterWorld(nextCell));
-            pathSegment.startColor = movementColor;
-            pathSegment.endColor = movementColor;
+            pathSegment.startColor = tile.unitColor;
+            pathSegment.endColor = tile.unitColor;
             lastCell = nextCell;
             lastDir = nextDir;
         }
