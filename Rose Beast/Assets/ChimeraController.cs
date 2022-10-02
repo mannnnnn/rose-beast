@@ -37,6 +37,12 @@ public class ChimeraController : MonoBehaviour
         tilemap = FindObjectOfType<Tilemap>();
         TimerLabel.text = Timer.ToString().PadLeft(2);
         runningTimer = StartCoroutine(GameTimer());
+
+       //Plan next move
+        Mover[] movers = FindObjectsOfType<Mover>();
+        foreach(Mover mover in movers){
+            mover.PlanMove();
+        }
     }
 
     IEnumerator GameTimer()

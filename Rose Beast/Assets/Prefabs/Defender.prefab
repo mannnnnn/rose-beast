@@ -317,8 +317,9 @@ GameObject:
   - component: {fileID: 8703680181047312846}
   - component: {fileID: 7909003600596725639}
   - component: {fileID: 3120214136856505794}
+  - component: {fileID: 1389469372696229489}
   m_Layer: 0
-  m_Name: Vermin
+  m_Name: Defender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,9 +406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 3
-  MaxHealth: 3
-  Drop: {fileID: 8282711365328152092, guid: 3831c90162dac28419b9bda7af506197, type: 3}
+  CurrentHealth: 10
+  MaxHealth: 10
+  Drop: {fileID: 0}
   meat: 0
 --- !u!114 &3120214136856505794
 MonoBehaviour:
@@ -424,6 +425,21 @@ MonoBehaviour:
   movementType: 1
   tilesPerCycle: 1
   plannedDirections: []
+--- !u!114 &1389469372696229489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706259981715885020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6cb13c9636745428a34f6e48eebb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmt: 2
+  AttackRange: 1
+  eatsMeat: 0
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +513,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a6953d13d3a927d4fa0658c24eb4deac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d65ad9ce8e269349beb125fc058192c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
