@@ -27,6 +27,8 @@ public class ChimeraController : MonoBehaviour
     public GameObject sfxPrefab;
     public SoundLookup soundLookup;
 
+    public List<Vector3Int> ReservedSpawns = new List<Vector3Int>(); 
+
     void Awake()
     {
        Instance = this;
@@ -98,6 +100,8 @@ public class ChimeraController : MonoBehaviour
         foreach(Spawner spawner in spawners){
             spawner.AgeChanged();
         }
+        ReservedSpawns.Clear();
+        
         yield return new WaitForSeconds(0.05f); //let things spawn properly
        
         //let all creatures show their attack range
