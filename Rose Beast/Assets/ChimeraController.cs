@@ -19,6 +19,7 @@ public class ChimeraController : MonoBehaviour
     
     public static ChimeraController Instance;
     public GameObject MovementLine;
+    public GameObject Arrowhead;
     public GameObject AttackZone;
 
     public List<Vector3Int> MoverPaths = new List<Vector3Int>(); 

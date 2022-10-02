@@ -44,7 +44,7 @@ public class Attacker : MonoBehaviour
                     Vector3Int pickedCell = myTile + new Vector3Int(x, y, 0);
                     GameObject attackZone = Instantiate(ChimeraController.Instance.AttackZone,this.transform.parent);
                     attackZone.transform.position = tileMap.GetCellCenterWorld(pickedCell);
-                    attackZone.GetComponentInChildren<SpriteRenderer>().color = new Color(tile.unitColor.r, tile.unitColor.g, tile.unitColor.b, 0.05f);
+                    attackZone.GetComponentInChildren<SpriteRenderer>().color = new Color(Color.red.r,Color.red.g, Color.red.b, 0.2f);
                     attackZones.Add(attackZone);
                 }
             }

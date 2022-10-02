@@ -19,7 +19,7 @@ public class TileBound : MonoBehaviour
     
     void Start()
     {
-        unitColor = UnityEngine.Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.2f);
+        unitColor = UnityEngine.Random.ColorHSV(0f, 0.5f, 1f, 1f, 1f, 1f, 0.2f, 0.4f);
           tilemap = FindObjectOfType<Tilemap>();
          transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(this.transform.position));
     }

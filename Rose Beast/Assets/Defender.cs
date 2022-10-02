@@ -20,6 +20,9 @@ public class Defender : MonoBehaviour
     }
 
     public void TakeDamage(int damageAmt, Attacker attacker){
+
+        if(attacker.GetComponent<Eater>() != null && this.GetComponent<Rose>() != null) return; //players can't damage thier own unit
+
         CurrentHealth -= damageAmt;
         if(CurrentHealth<=0){
             Die();

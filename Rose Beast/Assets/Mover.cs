@@ -26,7 +26,7 @@ public class Mover : MonoBehaviour {
         tile = FindObjectOfType<TileBound>();
     }
 
-    List<LineRenderer> lines = new List<LineRenderer>();
+    List<GameObject> lines = new List<GameObject>();
     public List<Vector2> plannedDirections = new List<Vector2>();
     public void PlanMove(){
         if(tile == null || tilemap == null) return;
@@ -46,12 +46,33 @@ public class Mover : MonoBehaviour {
             if(nextDir == Vector2.zero) continue;
             //Create arrow
             LineRenderer pathSegment = Instantiate(ChimeraController.Instance.MovementLine, this.transform).GetComponent<LineRenderer>();
-            lines.Add(pathSegment);
+            lines.Add(pathSegment.gameObject);
             Vector3Int nextCell = lastCell + new Vector3Int((int)nextDir.x, (int)nextDir.y, 0);
             pathSegment.SetPosition(0, tilemap.GetCellCenterWorld(lastCell));
             pathSegment.SetPosition(1, tilemap.GetCellCenterWorld(nextCell));
             pathSegment.startColor = tile.unitColor;
             pathSegment.endColor = tile.unitColor;
+            
+
+
+            if(i == tilesPerCycle-1 && nextDir != Vector2.zero){
+                //last segment, spawn arrowhead
+                GameObject arrowhead = Instantiate(ChimeraController.Instance.Arrowhead);
+                arrowhead.GetComponent<SpriteRenderer>().color = tile.unitColor;
+                arrowhead.transform.position= tilemap.GetCellCenterWorld(nextCell);
+                if(nextDir == Vector2.up){
+                    arrowhead.transform.transform.eulerAngles = new Vector3(0,0,90);
+                } else if(nextDir == Vector2.left){
+                    arrowhead.transform.transform.eulerAngles = new Vector3(0,0,180);
+                } else if(nextDir == Vector2.down){
+                    arrowhead.transform.transform.eulerAngles = new Vector3(0,0,270);
+                } else if(nextDir == Vector2.right){
+                    arrowhead.transform.transform.eulerAngles = new Vector3(0,0,0);
+                }
+                lines.Add(arrowhead);
+            }
+
+
             lastCell = nextCell;
             lastDir = nextDir;
         }
@@ -89,6 +110,11 @@ public class Mover : MonoBehaviour {
     }
 
     void OnDestroy() {
+        for(int i = 0; i<lines.Count;)
+        {
+            Destroy(lines[0].gameObject);
+            lines.Remove(lines[0]);
+        } 
         if(moving != null) StopCoroutine(moving);
     }
 
