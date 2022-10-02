@@ -34,10 +34,20 @@ public class Defender : MonoBehaviour
     }
 
     public void Die(){
-        if(Drop != null) {
-            GameObject droppedSpawn = Instantiate(Drop, this.transform.parent);
-            droppedSpawn.transform.position = this.transform.position;
+        Eater eater = GetComponent<Eater>();
+        if(eater != null){
+            //knock down a peg and respawn
+            eater.Devolve();
+            eater.transform.position = FindObjectOfType<Rose>().transform.position;
+        } else {
+            if(Drop != null) {
+                GameObject droppedSpawn = Instantiate(Drop, this.transform.parent);
+                droppedSpawn.transform.position = this.transform.position;
+            }
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+
+
+       
     }
 }

@@ -54,7 +54,7 @@ public class Attacker : MonoBehaviour
     public bool AttackWithinRange(){
         if(GetComponent<PlayerMovement>() != null) return false;
         if(attackZones.Count == 0) return false;
-         UnityEngine.Debug.Log(this.name + "is attacking within range");
+
         bool targetInRange = false;
         Vector3Int myTile = tileMap.WorldToCell(this.transform.position);
 
@@ -64,11 +64,8 @@ public class Attacker : MonoBehaviour
                     Vector3Int pickedCell = myTile + new Vector3Int(x, y, 0);
                      GameObject foundObj = ChimeraController.Instance.FindObjectOnTile(pickedCell);
                     if(IsValidTarget(foundObj)){
-                        UnityEngine.Debug.Log(this.name + "found a valid attack target of " + foundObj.name);
                         targetInRange = true;
                         Attack(foundObj);
-                    } else if(foundObj!= null){
-                        UnityEngine.Debug.Log(this.name + "found a " + foundObj.name +" was not a valid target");
                     }
                 }
             }
