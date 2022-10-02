@@ -52,6 +52,9 @@ public class Defender : MonoBehaviour
             if(Drop != null) {
                 GameObject droppedSpawn = Instantiate(Drop, this.transform.parent);
                 droppedSpawn.transform.position = this.transform.position;
+                if(droppedSpawn.GetComponent<RoseLord>() != null){
+                    ChimeraController.Instance.RoselordSpawn();
+                }
             }
 
             Destroy(this.gameObject);
@@ -59,6 +62,11 @@ public class Defender : MonoBehaviour
             Rose rose = GetComponent<Rose>();
             if(rose != null){
                 ChimeraController.Instance.GameOver();
+            }
+
+            RoseLord roseLord = GetComponent<RoseLord>();
+            if(roseLord != null){
+                ChimeraController.Instance.WinGame();
             }
         }
 

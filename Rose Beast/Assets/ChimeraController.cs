@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChimeraController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ChimeraController : MonoBehaviour
     
     public TextMeshPro TimerLabel;
     public TextMeshPro RetryLabel;
+    public TextMeshPro RoselordLabel;
+    public GameObject RoselordEnd;
     public int Timer = 10;
      
     public bool gameRunning = true;
@@ -101,7 +104,7 @@ public class ChimeraController : MonoBehaviour
             spawner.AgeChanged();
         }
         ReservedSpawns.Clear();
-        
+
         yield return new WaitForSeconds(0.05f); //let things spawn properly
        
         //let all creatures show their attack range
@@ -151,9 +154,14 @@ public class ChimeraController : MonoBehaviour
     public void WinGame(){
         StartCoroutine(FinishGame());
         TimerLabel.text = "VICTORY!";
+
+        if(FindObjectOfType<RoseLord>() != null){
+            RoselordEnd.SetActive(true);
+        }
     }
 
     IEnumerator FinishGame(){
+        RoselordLabel.gameObject.SetActive(false);
         if(runningTimer != null) StopCoroutine(runningTimer);
         
         PlayerMovement beast = FindObjectOfType<PlayerMovement>();
@@ -204,4 +212,8 @@ public class ChimeraController : MonoBehaviour
         audioSource.Play();
         Destroy(audioSource.gameObject,  audioSource.clip.length * (Time.timeScale < 0.009999999776482582 ? 0.01f : Time.timeScale));
     } 
+
+    public void RoselordSpawn(){
+        RoselordLabel.gameObject.SetActive(true);
+    }
 }
