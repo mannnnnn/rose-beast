@@ -29,7 +29,6 @@ public class Attacker : MonoBehaviour
         if(obj != null){
             Defender defender = obj.GetComponent<Defender>();
             if(defender != null){
-                UnityEngine.Debug.Log(this.name + "is attacking" + obj.name);
                 defender.TakeDamage(DamageAmt, this);
             }
         }

@@ -5,30 +5,46 @@ using UnityEngine;
 public class Eater : MonoBehaviour
 {
     private int currentEXP = 0;
-    public List<Sprite> growingSprites = new List<Sprite>();
-    public List<int> requiredGrowingEXPLevels = new List<int>();
-    private int nextRequiredGrowingEXPLevel;
+    public int expRequiredBase;
     private int lastRequiredGrowingEXPLevel = 0;
    
+    private int expRequired = 0;
     private TileBound tile;
+    public int level = 1;
+    public int maxLevel = 5;
 
     void Start()
     {
         tile = GetComponent<TileBound>();
-        nextRequiredGrowingEXPLevel = requiredGrowingEXPLevels[0];
+        expRequired = expRequiredBase;
     }
 
     public void GetEXP(int expGain){
         currentEXP += expGain;
-        if(currentEXP>=nextRequiredGrowingEXPLevel){
-            tile.UpdateSlider(0, nextRequiredGrowingEXPLevel, Color.white);
+        if(currentEXP>=expRequired){
+            lastRequiredGrowingEXPLevel = expRequiredBase;
             Evolve();
         } else {
-            tile.UpdateSlider(currentEXP-lastRequiredGrowingEXPLevel, nextRequiredGrowingEXPLevel-lastRequiredGrowingEXPLevel, Color.white);
+            tile.UpdateSlider(currentEXP-lastRequiredGrowingEXPLevel, expRequiredBase-lastRequiredGrowingEXPLevel, Color.white);
         }
     }
 
     public void Evolve(){
-        GetComponentInChildren<SpriteRenderer>().sprite = growingSprites[growingSprites.IndexOf(GetComponentInChildren<SpriteRenderer>().sprite)+1];
+        if(level < maxLevel){
+            level++;
+            GetComponent<Animator>().SetTrigger("Grow");
+            expRequired = expRequiredBase*(level*2);
+            tile.UpdateSlider(0, expRequiredBase, Color.white);
+        }
+       
+    }
+
+    public void Devolve(){
+        if(level > 1){
+            level--;
+            GetComponent<Animator>().SetTrigger("Shrink");
+            expRequired = expRequiredBase*(level*2);
+        }
+        
     }
 }
