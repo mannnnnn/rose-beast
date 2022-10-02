@@ -24,6 +24,8 @@ public class ChimeraController : MonoBehaviour
 
     public List<Vector3Int> MoverPaths = new List<Vector3Int>(); 
     private Coroutine runningTimer;
+    public GameObject sfxPrefab;
+    public SoundLookup soundLookup;
 
     void Awake()
     {
@@ -44,6 +46,9 @@ public class ChimeraController : MonoBehaviour
             if(Timer <= 0){
                 Timer = 11;
                 StartCoroutine(TimesUp());
+                ChimeraController.Instance.PlaySFX("Tock");
+            } else {
+                ChimeraController.Instance.PlaySFX("Tick");
             }
             yield return new WaitForSeconds(1);
             Timer--;
@@ -151,4 +156,37 @@ public class ChimeraController : MonoBehaviour
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         
     }
+
+
+    public void PlaySFX(string clip){
+        PlaySFX(clip, -1, float.MaxValue);
+    }
+    
+    public void PlaySFX(string clip, float volume){
+        PlaySFX(clip, volume, float.MaxValue);
+    }
+
+     public void PlaySFX(string clip, float volume, float pitch){
+        GameObject obj = Instantiate(sfxPrefab, GameObject.FindGameObjectWithTag("MusicBox").transform);
+        obj.name = "SFX - " + clip;
+        AudioSource audioSource = obj.GetComponent<AudioSource>();
+        SoundLookup.Sound snd = soundLookup.GetSound(clip);
+        if (snd == null)
+        {
+            Debug.Log($"Warning: Sound Effect {clip} is not registered.");
+            return;
+        }
+        audioSource.clip = snd.clip;
+
+        if(volume > 0){
+            audioSource.volume = volume * snd.volume;
+        }
+
+        if(pitch < float.MaxValue){
+            audioSource.pitch = pitch;
+        }
+
+        audioSource.Play();
+        Destroy(audioSource.gameObject,  audioSource.clip.length * (Time.timeScale < 0.009999999776482582 ? 0.01f : Time.timeScale));
+    } 
 }

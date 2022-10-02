@@ -23,17 +23,23 @@ public class Defender : MonoBehaviour
 
         if(attacker.GetComponent<Eater>() != null && this.GetComponent<Rose>() != null) return; //players can't damage thier own unit
 
+
         CurrentHealth -= damageAmt;
+
+        Eater eater = attacker.GetComponent<Eater>();
+         ChimeraController.Instance.PlaySFX("Chomp");
+        if(eater != null && meat > 0){
+            ChimeraController.Instance.PlaySFX("MeatyChomp", 0.3f);
+            eater.GetEXP(meat);
+        } 
+
         if(CurrentHealth<=0){
             Die();
         } else {
             tile.UpdateSlider(CurrentHealth, MaxHealth, Color.red + Color.white/4 + Color.blue/4);
         }
 
-        Eater eater = attacker.GetComponent<Eater>();
-        if(eater != null && meat > 0){
-            eater.GetEXP(meat);
-        }
+        
     }
 
     public void Die(){

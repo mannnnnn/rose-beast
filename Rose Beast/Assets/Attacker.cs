@@ -72,6 +72,7 @@ public class Attacker : MonoBehaviour
         }
 
         if(targetInRange){
+            
             foreach(GameObject attackZone in attackZones){
                 attackZone.GetComponentInChildren<SpriteRenderer>().color = Color.red + Color.white/2;
             }

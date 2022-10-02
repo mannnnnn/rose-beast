@@ -1583,6 +1583,8 @@ MonoBehaviour:
   Arrowhead: {fileID: 4693372934046871384, guid: 6ceabe8444cfdd84ebde7d5d0931edc0, type: 3}
   AttackZone: {fileID: 344529407747082274, guid: ce52102a298e1bb47925b30d0e7f2a92, type: 3}
   MoverPaths: []
+  sfxPrefab: {fileID: 191787582474377489, guid: 9a050afd233af9f439c565f9abea1525, type: 3}
+  soundLookup: {fileID: 11400000, guid: 118d51d70ffc93b40a01cd5039135260, type: 2}
 --- !u!4 &542669887
 Transform:
   m_ObjectHideFlags: 0
@@ -6694,6 +6696,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7265534899535542269, guid: a115eaa4433d2964698fd4197024bfdc, type: 3}
   m_PrefabInstance: {fileID: 1462408340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1475356323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475356324}
+  m_Layer: 0
+  m_Name: MusicBox
+  m_TagString: MusicBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475356324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475356323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.856359, y: -91.62318, z: -4.6653585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1479578742
 PrefabInstance:
   m_ObjectHideFlags: 0

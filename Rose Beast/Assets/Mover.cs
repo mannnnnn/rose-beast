@@ -161,11 +161,18 @@ public class Mover : MonoBehaviour {
     public void PlayerInteraction(GameObject hitObject){
         if(hitObject.GetComponent<Defender>()){
             this.GetComponent<Attacker>().Attack(hitObject);
+        } else {
+            ChimeraController.Instance.PlaySFX("Block");
         }
     }
 
     IEnumerator Moving(Vector2 dir, bool instant)
     {
+
+        if(!instant){
+            ChimeraController.Instance.PlaySFX("Move", 0.2f);
+        }
+
        isMoving = true;
        float origZ = transform.position.z;
        Vector3Int origPosition = tilemap.WorldToCell(transform.position);
@@ -187,6 +194,7 @@ public class Mover : MonoBehaviour {
 
     IEnumerator Blocked(Vector2 dir, bool instant)
     {
+
        isMoving = true;
        float origZ = transform.position.z;
        Vector3Int origPosition = tilemap.WorldToCell(transform.position);
