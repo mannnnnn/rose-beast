@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Mover mover;
     private Vector2 moveInput;
+    public bool CanMove = true; 
 
     // Start is called before the first frame update
     void Start()
@@ -16,18 +17,26 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue input){
         moveInput = input.Get<Vector2>();
+
+        if(!CanMove && !ChimeraController.Instance.gameRunning){
+             ChimeraController.Instance.StartOver();
+        }
     }
 
     void OnFire(InputValue input){
         if(ChimeraController.Instance.debug){
             StartCoroutine(ChimeraController.Instance.TimesUp());
         }
+
+        if(!CanMove && !ChimeraController.Instance.gameRunning){
+             ChimeraController.Instance.StartOver();
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if(!CanMove) return;
         if(moveInput.magnitude > 0f) {
             if(Mathf.Abs(moveInput.x) > Mathf.Abs(moveInput.y)){
                 if(moveInput.x > 0){

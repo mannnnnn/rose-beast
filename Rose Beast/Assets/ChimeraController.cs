@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class ChimeraController : MonoBehaviour
 {
     public bool debug = false;
     
     public TextMeshPro TimerLabel;
+    public TextMeshPro RetryLabel;
     public int Timer = 10;
      
-    private bool gameRunning = true;
+    public bool gameRunning = true;
     private Tilemap tilemap;
     public GameObject instructions;
     
@@ -20,25 +22,18 @@ public class ChimeraController : MonoBehaviour
     public GameObject AttackZone;
 
     public List<Vector3Int> MoverPaths = new List<Vector3Int>(); 
+    private Coroutine runningTimer;
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+       Instance = this;
     }
        
     void Start()
     {
         tilemap = FindObjectOfType<Tilemap>();
         TimerLabel.text = Timer.ToString().PadLeft(2);
-        StartCoroutine(GameTimer());
+        runningTimer = StartCoroutine(GameTimer());
     }
 
     IEnumerator GameTimer()
@@ -130,5 +125,29 @@ public class ChimeraController : MonoBehaviour
         } else {
             return col.gameObject;
         }
+    }
+
+    public void GameOver(){
+        StartCoroutine(FinishGame());
+    }
+
+    IEnumerator FinishGame(){
+        if(runningTimer != null) StopCoroutine(runningTimer);
+        TimerLabel.text = "GAMEOVER";
+        PlayerMovement beast = FindObjectOfType<PlayerMovement>();
+        if(beast != null) beast.CanMove = false;
+        RetryLabel.gameObject.SetActive(true);
+
+
+        yield return new WaitForSeconds(1);
+        gameRunning = false;
+
+    }
+
+    public void StartOver(){
+        this.gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        
     }
 }
