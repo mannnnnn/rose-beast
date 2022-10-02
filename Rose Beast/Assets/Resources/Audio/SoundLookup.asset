@@ -16,9 +16,6 @@ MonoBehaviour:
   - name: Block
     volume: 0.7
     clip: {fileID: 8300000, guid: ff2c68e7c58f467418835920beb21390, type: 3}
-  - name: Move
-    volume: 0.4
-    clip: {fileID: 8300000, guid: 4448aed20fdc79947a9b477fc8eb93e8, type: 3}
   - name: Tick
     volume: 0.4
     clip: {fileID: 8300000, guid: c881dd798b3c21d42814dbb0bc397473, type: 3}

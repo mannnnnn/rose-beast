@@ -170,7 +170,7 @@ public class Mover : MonoBehaviour {
     {
 
         if(!instant){
-            ChimeraController.Instance.PlaySFX("Move", 0.2f);
+           // ChimeraController.Instance.PlaySFX("Move", 0.2f);
         }
 
        isMoving = true;
