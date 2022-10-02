@@ -8,10 +8,14 @@ public class Attacker : MonoBehaviour
     public int DamageAmt = 1;
     public int AttackRange = 1;
 
+
+
     private TileBound tile;
     private Tilemap tileMap;
 
     public bool eatsMeat = false;
+    public bool attacksStatic = false;
+    public bool attacksPassive = false;
 
     private List<GameObject> attackZones = new List<GameObject>();
 
@@ -101,6 +105,14 @@ public class Attacker : MonoBehaviour
         if(foundObj.GetComponent<Defender>()!=null){
             if(foundObj.GetComponent<Defender>().meat > 0){
                 if(!eatsMeat) return false;
+            }
+
+            if(foundObj.GetComponent<Mover>() == null && !attacksStatic && foundObj.GetComponent<Rose>() == null){
+                return false;
+            }
+
+            if(foundObj.GetComponent<Attacker>() == null && !attacksPassive && foundObj.GetComponent<Rose>() == null){
+                return false;
             }
             return true;
         }

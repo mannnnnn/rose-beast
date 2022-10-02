@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextForm: {fileID: 8706259981715885020, guid: 9efe12ed326b8154aa642bff72384c7b, type: 3}
-  growingAge: 5
+  growingAge: 2
   useSlider: 0
 --- !u!114 &5983879150964622262
 MonoBehaviour:
@@ -440,6 +440,8 @@ MonoBehaviour:
   DamageAmt: 5
   AttackRange: 1
   eatsMeat: 1
+  attacksStatic: 0
+  attacksPassive: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0

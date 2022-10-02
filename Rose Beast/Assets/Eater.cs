@@ -33,8 +33,8 @@ public class Eater : MonoBehaviour
         if(level < maxLevel){
             level++;
             GetComponent<Animator>().SetTrigger("Grow");
-            GetComponent<Defender>().MaxHealth = level*5;
-            GetComponent<Defender>().CurrentHealth = level*5;
+            GetComponent<Defender>().MaxHealth = level*2;
+            GetComponent<Defender>().CurrentHealth = level*2;
             GetComponent<Attacker>().DamageAmt = level;
             expRequired = expRequiredBase*(level*2);
             tile.UpdateSlider(0, expRequiredBase, Color.white);
@@ -45,8 +45,8 @@ public class Eater : MonoBehaviour
     public void Devolve(){
         if(level > 1){
             level--;
-            GetComponent<Defender>().MaxHealth = level*5;
-            GetComponent<Defender>().CurrentHealth = level*5;
+            GetComponent<Defender>().MaxHealth = level*2;
+            GetComponent<Defender>().CurrentHealth = level*2;
             GetComponent<Attacker>().DamageAmt = level;
             GetComponent<Animator>().SetTrigger("Shrink");
             expRequired = expRequiredBase*(level*2);

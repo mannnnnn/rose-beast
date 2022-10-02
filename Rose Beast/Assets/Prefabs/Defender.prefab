@@ -440,6 +440,8 @@ MonoBehaviour:
   DamageAmt: 2
   AttackRange: 1
   eatsMeat: 0
+  attacksStatic: 0
+  attacksPassive: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
