@@ -135,11 +135,17 @@ public class ChimeraController : MonoBehaviour
 
     public void GameOver(){
         StartCoroutine(FinishGame());
+        TimerLabel.text = "GAMEOVER";
+    }
+
+    public void WinGame(){
+        StartCoroutine(FinishGame());
+        TimerLabel.text = "VICTORY!";
     }
 
     IEnumerator FinishGame(){
         if(runningTimer != null) StopCoroutine(runningTimer);
-        TimerLabel.text = "GAMEOVER";
+        
         PlayerMovement beast = FindObjectOfType<PlayerMovement>();
         if(beast != null) beast.CanMove = false;
         RetryLabel.gameObject.SetActive(true);
@@ -147,7 +153,6 @@ public class ChimeraController : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         gameRunning = false;
-
     }
 
     public void StartOver(){

@@ -6,7 +6,8 @@ public class Rose : Grower
 {
    public List<Sprite> growingSprites = new List<Sprite>();
     public List<int> requiredGrowingAges = new List<int>();
-
+    public int level = 1;
+    public int winningLevel = 4;
     void Start()
     {
         tile = GetComponent<TileBound>();
@@ -15,11 +16,19 @@ public class Rose : Grower
     }
 
     public override void Grow(){
+        
+        level++;
+        GetComponentInChildren<SpriteRenderer>().sprite = growingSprites[level-1];
+
+        if(level == winningLevel){
+            ChimeraController.Instance.WinGame(); 
+            return;
+        }
+
         FindObjectOfType<BoundsController>().ExpandBounds();
-        GetComponentInChildren<SpriteRenderer>().sprite = growingSprites[growingSprites.IndexOf(GetComponentInChildren<SpriteRenderer>().sprite)+1];
-   
         if(requiredGrowingAges.IndexOf(growingAge) < requiredGrowingAges.Count-1){
-            growingAge = requiredGrowingAges[requiredGrowingAges.IndexOf(growingAge)];
+            growingAge = requiredGrowingAges[level-1];
+            tile.UpdateSlider(0, growingAge, Color.white);
         } else {
             growingAge = -1;
         }
