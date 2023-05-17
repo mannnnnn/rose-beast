@@ -32,6 +32,8 @@ public class ChimeraController : MonoBehaviour
 
     public List<Vector3Int> ReservedSpawns = new List<Vector3Int>(); 
 
+    private PlayerMovement playerMovement;
+
     void Awake()
     {
        Instance = this;
@@ -42,6 +44,8 @@ public class ChimeraController : MonoBehaviour
         tilemap = FindObjectOfType<Tilemap>();
         TimerLabel.text = Timer.ToString().PadLeft(2);
         runningTimer = StartCoroutine(GameTimer());
+
+        playerMovement = FindObjectOfType<PlayerMovement>();
 
        //Plan next move
         Mover[] movers = FindObjectsOfType<Mover>();
@@ -69,7 +73,13 @@ public class ChimeraController : MonoBehaviour
     }
 
     public IEnumerator TimesUp(){
-         
+
+        //complete player movement to avoid overlapping tiles
+        if(playerMovement != null){
+            playerMovement.mover.ForceCompleteMove();
+            playerMovement.CanMove = false;
+        }
+
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
             tile.UpdateAge();
         }
@@ -113,11 +123,15 @@ public class ChimeraController : MonoBehaviour
             if(attacker != null) attacker.ShowRange();
         }
 
-
        //Plan next move
        movers = FindObjectsOfType<Mover>(); //this can change, so recall
         foreach(Mover mover in movers){
             mover.PlanMove();
+        }
+
+        //reenable player movement
+        if(playerMovement != null && gameRunning == true){
+            playerMovement.CanMove = true;
         }
     }
 

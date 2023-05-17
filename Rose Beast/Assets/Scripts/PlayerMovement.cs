@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Mover mover;
+    public Mover mover;
     private Vector2 moveInput;
     public bool CanMove = true; 
 

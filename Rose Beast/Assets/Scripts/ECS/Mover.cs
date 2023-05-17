@@ -12,7 +12,9 @@ public class Mover : MonoBehaviour {
     private Tilemap tilemap;
     private TileBound tile;
    
-
+    private Coroutine movingAction = null;
+    private Vector3Int cellToMoveTo = Vector3Int.zero;
+    
     public enum MovementType{
         NONE,
         RANDOM,
@@ -104,9 +106,9 @@ public class Mover : MonoBehaviour {
         return nextDir;
     }
 
-    Coroutine moving;
+    
     public void ExecuteMove(){
-        moving = StartCoroutine(ExecuteMoveOnDelay());
+        movingAction = StartCoroutine(ExecuteMoveOnDelay());
     }
 
     void OnDestroy() {
@@ -115,7 +117,7 @@ public class Mover : MonoBehaviour {
             Destroy(lines[0].gameObject);
             lines.Remove(lines[0]);
         } 
-        if(moving != null) StopCoroutine(moving);
+        if(movingAction != null) StopCoroutine(movingAction);
     }
 
     IEnumerator ExecuteMoveOnDelay(){
@@ -136,12 +138,11 @@ public class Mover : MonoBehaviour {
         } 
     }
 
-
     public bool Move(Vector2 dir, bool instant = false){
         Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
         GameObject foundObj = ChimeraController.Instance.FindObjectOnTile(nextCell);
         if(CanMove(foundObj) && !isMoving){
-            StartCoroutine(Moving(dir,instant));
+            movingAction = StartCoroutine(Moving(dir,instant));
             return true;
         } else if(!CanMove(foundObj) && !isMoving){
             StartCoroutine(Blocked(dir,instant));
@@ -152,6 +153,14 @@ public class Mover : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    public void ForceCompleteMove(){
+        //bug from the demo: player animation delays can result in overlapping on tiles
+        //to fix, make sure we complete anims before the timer actions happen
+         if(movingAction != null) StopCoroutine(movingAction);
+         transform.position = tilemap.GetCellCenterWorld(cellToMoveTo);
+         isMoving = false;
     }
 
     public bool CanMove(GameObject obj){
@@ -166,9 +175,10 @@ public class Mover : MonoBehaviour {
         }
     }
 
+
+    
     IEnumerator Moving(Vector2 dir, bool instant)
     {
-
         if(!instant){
            // ChimeraController.Instance.PlaySFX("Move", 0.2f);
         }
@@ -177,16 +187,16 @@ public class Mover : MonoBehaviour {
        float origZ = transform.position.z;
        Vector3Int origPosition = tilemap.WorldToCell(transform.position);
 
-       Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
+       cellToMoveTo = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
 
        float elapsedTime = 0;
         while(elapsedTime < movementDelay){
-            transform.position = Vector2.Lerp(tilemap.GetCellCenterWorld(origPosition), tilemap.GetCellCenterWorld(nextCell), elapsedTime/movementDelay);
+            transform.position = Vector2.Lerp(tilemap.GetCellCenterWorld(origPosition), tilemap.GetCellCenterWorld(cellToMoveTo), elapsedTime/movementDelay);
             elapsedTime += Time.deltaTime * (instant?2:1);
             yield return null;
         }
 
-      transform.position = tilemap.GetCellCenterWorld(nextCell);
+      transform.position = tilemap.GetCellCenterWorld(cellToMoveTo);
        isMoving = false;
        yield return null;
     }
