@@ -24,10 +24,10 @@ public class TileBound : MonoBehaviour
          transform.position = tilemap.GetCellCenterWorld(tilemap.WorldToCell(this.transform.position));
     }
 
-    public void UpdateSlider(int fill, int max, Color color){
+    public void UpdateSlider(float fill, float max, Color color){
         if(slider != null){
-            slider.value = fill;
             slider.maxValue = max;
+            slider.value = fill;
             UpdateSliderColor(color);
         }
     }

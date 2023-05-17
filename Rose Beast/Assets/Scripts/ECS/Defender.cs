@@ -23,7 +23,6 @@ public class Defender : MonoBehaviour
 
         if(attacker.GetComponent<Eater>() != null && this.GetComponent<Rose>() != null) return; //players can't damage thier own unit
 
-
         CurrentHealth -= damageAmt;
 
         Eater eater = attacker.GetComponent<Eater>();
@@ -36,7 +35,8 @@ public class Defender : MonoBehaviour
         if(CurrentHealth<=0){
             Die();
         } else {
-            tile.UpdateSlider(CurrentHealth, MaxHealth, Color.red + Color.white/4 + Color.blue/4);
+            
+            tile.UpdateSlider(CurrentHealth, MaxHealth, Color.Lerp(Color.red + Color.white/4 + Color.blue/4, Color.white, ((float)CurrentHealth/2)/(float)MaxHealth));
         }
 
         

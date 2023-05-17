@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ChimeraController : MonoBehaviour
 {
     public bool debug = false;
+    public bool noTimer = false;
     
     public TextMeshPro TimerLabel;
     public TextMeshPro RetryLabel;
@@ -56,7 +57,7 @@ public class ChimeraController : MonoBehaviour
 
     IEnumerator GameTimer()
     {
-        while(gameRunning){
+        while(gameRunning && !noTimer){
 
             if(Timer <= 0){
                 Timer = 11;
