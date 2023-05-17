@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae9cd81d3e2a294bbf2ed75a08616eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEveryMultipleOf: 3
+  spawnEveryMultipleOf: 5
   spawn: {fileID: 8706259981715885020, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
   useSlider: 0
 --- !u!114 &2178333699874173434
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae9cd81d3e2a294bbf2ed75a08616eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEveryMultipleOf: 5
+  spawnEveryMultipleOf: 10
   spawn: {fileID: 8706259981715885020, guid: f9df6859add82024cb1c534d7dc05b6b, type: 3}
   useSlider: 0
 --- !u!1 &4776800682590203177

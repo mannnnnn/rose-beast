@@ -20,26 +20,37 @@ public class Defender : MonoBehaviour
     }
 
     public void TakeDamage(int damageAmt, Attacker attacker){
+        Eater eater = GetComponent<Eater>();
+        Eater attackerEater = attacker.GetComponent<Eater>();
 
-        if(attacker.GetComponent<Eater>() != null && this.GetComponent<Rose>() != null) return; //players can't damage thier own unit
+        if(attackerEater != null && this.GetComponent<Rose>() != null) return; //players can't damage thier own unit
 
-        CurrentHealth -= damageAmt;
+        if(eater != null){
+            //health is exp
+            eater.LoseEXP(damageAmt);
+        } else {
+            CurrentHealth -= damageAmt;
+        }
 
-        Eater eater = attacker.GetComponent<Eater>();
          ChimeraController.Instance.PlaySFX("Chomp");
-        if(eater != null && meat > 0){
+        if(attackerEater != null && meat > 0){
             ChimeraController.Instance.PlaySFX("MeatyChomp", 0.3f);
-            eater.GetEXP(meat);
+            attackerEater.GetEXP(meat);
         } 
 
         if(CurrentHealth<=0){
             Die();
         } else {
-            
+            UpdateHealthSlider();
+        }
+    }
+
+    public void UpdateHealthSlider(){
+        if(GetComponent<Eater>() != null){
+            tile.UpdateSlider(CurrentHealth, MaxHealth, Color.Lerp(Color.red/3 + Color.white/2 + Color.blue/3, Color.white, ((float)CurrentHealth/2)/(float)MaxHealth));
+        } else {
             tile.UpdateSlider(CurrentHealth, MaxHealth, Color.Lerp(Color.red + Color.white/4 + Color.blue/4, Color.white, ((float)CurrentHealth/2)/(float)MaxHealth));
         }
-
-        
     }
 
     public void Die(){

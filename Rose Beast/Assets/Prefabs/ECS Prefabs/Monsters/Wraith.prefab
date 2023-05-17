@@ -437,9 +437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6cb13c9636745428a34f6e48eebb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageAmt: 30
-  AttackRange: 2
+  DamageAmt: 300
+  AttackRange: 1
   eatsMeat: 0
+  attacksStatic: 0
+  attacksPassive: 0
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
