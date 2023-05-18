@@ -4642,67 +4642,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662247219}
   m_CullTransparentMesh: 1
---- !u!1 &664069796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5656135439159650476, guid: 341a80b3c7b2e734c9cc10bf31af64ba, type: 3}
-  m_PrefabInstance: {fileID: 5656135438596771336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &664069799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5656135439159650479, guid: 341a80b3c7b2e734c9cc10bf31af64ba, type: 3}
   m_PrefabInstance: {fileID: 5656135438596771336}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &664069800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664069796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 881ca333507a9aa45bbe1747cceac90c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &664069801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664069796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3100a0f0de247d145949667f0da39b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextForm: {fileID: 0}
-  growingAge: 0
-  useSlider: 1
-  growingSprites:
-  - {fileID: -1448814674, guid: 518ed0ad504c2c342928c6e369afa91f, type: 3}
-  - {fileID: -1988718401, guid: 518ed0ad504c2c342928c6e369afa91f, type: 3}
-  - {fileID: 943576556, guid: 518ed0ad504c2c342928c6e369afa91f, type: 3}
-  - {fileID: 302238472, guid: 518ed0ad504c2c342928c6e369afa91f, type: 3}
-  requiredGrowingAges: 020000000a0000001e00000032000000
-  level: 1
-  winningLevel: 4
---- !u!114 &664069804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664069796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 1
-  MaxHealth: 1
-  Drop: {fileID: 0}
-  meat: 0
 --- !u!1 &673220898
 GameObject:
   m_ObjectHideFlags: 0
