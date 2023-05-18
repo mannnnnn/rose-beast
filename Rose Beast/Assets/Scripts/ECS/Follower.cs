@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Follower : MonoBehaviour {
     /*
@@ -7,9 +8,18 @@ public class Follower : MonoBehaviour {
     */
     
     public Mover mover;
+    public Leader leader;
 
     public void Start(){
         mover = GetComponent<Mover>();
+        //tilemap = FindObjectOfType<Tilemap>();
+    }
+
+    public void FindNearbyLeader(){
+        if(leader == null){
+            //check adjacent tiles for Leaders
+            //tilemap = FindObjectOfType<Tilemap>();
+        }
     }
 
     

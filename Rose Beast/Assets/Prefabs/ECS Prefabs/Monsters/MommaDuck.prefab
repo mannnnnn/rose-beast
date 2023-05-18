@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 7909003600596725639}
   - component: {fileID: 3120214136856505794}
   - component: {fileID: 1918418051898455557}
+  - component: {fileID: 5051015237496597619}
   m_Layer: 0
   m_Name: MommaDuck
   m_TagString: Untagged
@@ -440,6 +441,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followers: []
   mover: {fileID: 0}
+--- !u!114 &5051015237496597619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706259981715885020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06961c7ee34b02446a61cbee8a18f978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextForm: {fileID: 8706259981715885020, guid: eed60ee6cb9e5b349b22435c6e60d244, type: 3}
+  growingAge: 20
+  useSlider: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
