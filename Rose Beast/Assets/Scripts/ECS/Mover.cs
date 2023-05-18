@@ -138,13 +138,24 @@ public class Mover : MonoBehaviour {
         } 
     }
 
-    public bool Move(Vector2 dir, bool instant = false){
+    public bool Move(Vector2 dir, bool instant = false, bool allowOverlap = false){
+        Vector3Int currentCell = tilemap.WorldToCell((Vector2)transform.position);
         Vector3Int nextCell = tilemap.WorldToCell((Vector2)transform.position) + new Vector3Int((int)dir.x, (int)dir.y, 0);
         GameObject foundObj = ChimeraController.Instance.FindObjectOnTile(nextCell);
-        if(CanMove(foundObj) && !isMoving){
+        
+        bool canMoveIntoSpot = CanMove(foundObj, allowOverlap);
+        Leader leader = GetComponent<Leader>();
+        
+        if(canMoveIntoSpot && !isMoving){
             movingAction = StartCoroutine(Moving(dir,instant));
+
+           
+            if(leader != null){
+                leader.OnMoved(currentCell);
+            }
+
             return true;
-        } else if(!CanMove(foundObj) && !isMoving){
+        } else if(!CanMove(foundObj, allowOverlap) && !isMoving){
             StartCoroutine(Blocked(dir,instant));
 
             if(this.GetComponent<PlayerMovement>() != null){
@@ -163,8 +174,8 @@ public class Mover : MonoBehaviour {
          isMoving = false;
     }
 
-    public bool CanMove(GameObject obj){
-        return obj == null || obj.GetComponent<Blocker>() == null;
+    public bool CanMove(GameObject obj, bool allowOverlap = false){
+        return obj == null || (allowOverlap || obj.GetComponent<Blocker>() == null);
     }
 
     public void PlayerInteraction(GameObject hitObject){

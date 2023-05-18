@@ -11,6 +11,8 @@ public class Defender : MonoBehaviour
     private TileBound tile;
     private Tilemap tilemap;
 
+    public bool UseSlider = true;
+
     public int meat = 0; //number of exp per hit
 
     void Start()
@@ -46,6 +48,8 @@ public class Defender : MonoBehaviour
     }
 
     public void UpdateHealthSlider(){
+        if(!UseSlider) return;
+
         if(GetComponent<Eater>() != null){
             tile.UpdateSlider(CurrentHealth, MaxHealth, Color.Lerp(Color.red/3 + Color.white/2 + Color.blue/3, Color.white, ((float)CurrentHealth/2)/(float)MaxHealth));
         } else {
