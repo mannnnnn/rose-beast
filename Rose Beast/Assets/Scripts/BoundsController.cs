@@ -11,8 +11,10 @@ public class BoundsController : MonoBehaviour
 
     public void ExpandBounds()
     {
-        UnityEngine.Debug.Log("Hit expand bounds");
-
+        if(unlockedBounds >= bounds.Count){
+            return; //nothing left to unlock on bounds
+        }
+        
         unlockedBounds++;
         bounds[unlockedBounds-1].gameObject.SetActive(true);
         bounds[unlockedBounds-2].RemoveBounds();
