@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnFire(InputValue input){
-        if(ChimeraController.Instance.debug){
+        if(ChimeraController.Instance.debugOptions.debug){
             StartCoroutine(ChimeraController.Instance.TimesUp());
         }
 

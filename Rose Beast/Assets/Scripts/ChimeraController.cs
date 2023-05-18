@@ -8,9 +8,6 @@ using UnityEngine.UI;
 
 public class ChimeraController : MonoBehaviour
 {
-    public bool debug = false;
-    public bool noTimer = false;
-    
     public TextMeshPro TimerLabel;
     public TextMeshPro RetryLabel;
     public TextMeshPro RoselordLabel;
@@ -34,6 +31,7 @@ public class ChimeraController : MonoBehaviour
     public List<Vector3Int> ReservedSpawns = new List<Vector3Int>(); 
 
     private PlayerMovement playerMovement;
+    public DebugOptions debugOptions;
 
     void Awake()
     {
@@ -43,10 +41,13 @@ public class ChimeraController : MonoBehaviour
     void Start()
     {
         tilemap = FindObjectOfType<Tilemap>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        debugOptions = FindObjectOfType<DebugOptions>();
+
+
         TimerLabel.text = Timer.ToString().PadLeft(2);
         runningTimer = StartCoroutine(GameTimer());
 
-        playerMovement = FindObjectOfType<PlayerMovement>();
 
        //Plan next move
         Mover[] movers = FindObjectsOfType<Mover>();
@@ -57,20 +58,22 @@ public class ChimeraController : MonoBehaviour
 
     IEnumerator GameTimer()
     {
-        while(gameRunning && !noTimer){
-
-            if(Timer <= 0){
+        while(gameRunning){
+            if(!debugOptions.noTimer){
+                if(Timer <= 0){
                 Timer = 11;
                 StartCoroutine(TimesUp());
                 ChimeraController.Instance.PlaySFX("Tock");
+                } else {
+                    ChimeraController.Instance.PlaySFX("Tick");
+                }
+                yield return new WaitForSeconds(1);
+                Timer--;
+                TimerLabel.text = Timer.ToString().PadLeft(2,'0');
             } else {
-                ChimeraController.Instance.PlaySFX("Tick");
+                yield return new WaitForSeconds(1);
             }
-            yield return new WaitForSeconds(1);
-            Timer--;
-            TimerLabel.text = Timer.ToString().PadLeft(2,'0');
         }
-        
     }
 
     public IEnumerator TimesUp(){

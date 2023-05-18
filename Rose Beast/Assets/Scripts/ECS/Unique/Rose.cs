@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rose : Grower
 {
-   public List<Sprite> growingSprites = new List<Sprite>();
+    public List<Sprite> growingSprites = new List<Sprite>();
     public List<int> requiredGrowingAges = new List<int>();
     public int level = 1;
     public int winningLevel = 4;
