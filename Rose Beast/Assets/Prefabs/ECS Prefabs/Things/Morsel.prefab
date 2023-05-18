@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 8703680181047312846}
   - component: {fileID: 7909003600596725639}
   m_Layer: 0
-  m_Name: Meat
+  m_Name: Morsel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,11 +404,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e86609870da294dba890b8406f2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 10
-  MaxHealth: 10
+  CurrentHealth: 1
+  MaxHealth: 1
   Drop: {fileID: 0}
   UseSlider: 1
-  meat: 2
+  meat: 1
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +482,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 757770e8027ca194fbd0f30b912d0ee6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba7bb4e381945b04383805ec7f375070, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

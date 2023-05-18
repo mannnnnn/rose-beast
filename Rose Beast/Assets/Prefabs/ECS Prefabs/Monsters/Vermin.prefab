@@ -407,7 +407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 3
   MaxHealth: 3
-  Drop: {fileID: 8282711365328152092, guid: 3831c90162dac28419b9bda7af506197, type: 3}
+  Drop: {fileID: 8706259981715885020, guid: 7aa3614b9f8a73d49943cf1362c67fe6, type: 3}
+  UseSlider: 1
   meat: 0
 --- !u!114 &3120214136856505794
 MonoBehaviour:
