@@ -58,6 +58,8 @@ public class ChimeraController : MonoBehaviour
 
     IEnumerator GameTimer()
     {
+        yield return new WaitForSeconds(1);
+
         while(gameRunning){
             if(!debugOptions.noTimer){
                 if(Timer <= 0){
@@ -67,11 +69,12 @@ public class ChimeraController : MonoBehaviour
                 } else {
                     ChimeraController.Instance.PlaySFX("Tick");
                 }
-                yield return new WaitForSeconds(1);
                 Timer--;
                 TimerLabel.text = Timer.ToString().PadLeft(2,'0');
-            } else {
                 yield return new WaitForSeconds(1);
+                
+            } else {
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
