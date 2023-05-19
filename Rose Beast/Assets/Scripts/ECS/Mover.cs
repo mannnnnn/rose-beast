@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[DisallowMultipleComponent]
 public class Mover : MonoBehaviour {
 
     public MovementType movementType;

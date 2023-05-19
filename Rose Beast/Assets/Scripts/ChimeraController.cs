@@ -140,6 +140,15 @@ public class ChimeraController : MonoBehaviour
             mover.PlanMove();
         }
 
+
+        //If any followers don't have leaders, try to assign them a leader
+        Follower[] followers = FindObjectsOfType<Follower>();
+        foreach(Follower follower in followers){
+            if(follower.leader == null){
+                follower.FindNearbyLeader();
+            }
+        }
+
         //reenable player movement
         if(playerMovement != null && gameRunning == true){
             playerMovement.CanMove = true;

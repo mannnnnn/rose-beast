@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static Follower;
 
+[DisallowMultipleComponent]
 public class Leader : MonoBehaviour {
     /*
     Follows the Leader whenever it moves

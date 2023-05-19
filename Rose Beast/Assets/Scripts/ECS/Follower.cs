@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+[DisallowMultipleComponent]
 public class Follower : MonoBehaviour {
     /*
     Follows the Leader without adhering to the timer rules
@@ -12,13 +14,32 @@ public class Follower : MonoBehaviour {
 
     public void Start(){
         mover = GetComponent<Mover>();
-        //tilemap = FindObjectOfType<Tilemap>();
+        if(leader == null){
+            FindNearbyLeader();
+        }
     }
 
     public void FindNearbyLeader(){
         if(leader == null){
-            //check adjacent tiles for Leaders
-            //tilemap = FindObjectOfType<Tilemap>();
+           Leader closestLeader = null;
+           float closestLeaderDistance = -1;
+
+           foreach(Leader foundLeader in FindObjectsOfType<Leader>()){
+                
+                float foundLeaderDistance = (transform.position - foundLeader.transform.position).magnitude;
+                
+                if(closestLeader == null || closestLeaderDistance > foundLeaderDistance){
+                    closestLeader = foundLeader;
+                    closestLeaderDistance = (transform.position - closestLeader.transform.position).magnitude;
+                }
+           }
+
+           if(closestLeader != null){
+                leader = closestLeader;
+                if(!leader.followers.Contains(this)){
+                    leader.followers.Add(this);
+                }
+           }
         }
     }
 

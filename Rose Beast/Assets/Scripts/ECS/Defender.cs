@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[DisallowMultipleComponent]
 public class Defender : MonoBehaviour
 {
     public int CurrentHealth = 1;
