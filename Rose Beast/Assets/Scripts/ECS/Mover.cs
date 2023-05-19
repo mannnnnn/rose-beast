@@ -169,9 +169,11 @@ public class Mover : MonoBehaviour {
     public void ForceCompleteMove(){
         //bug from the demo: player animation delays can result in overlapping on tiles
         //to fix, make sure we complete anims before the timer actions happen
-         if(movingAction != null) StopCoroutine(movingAction);
-         transform.position = tilemap.GetCellCenterWorld(cellToMoveTo);
-         isMoving = false;
+         if(movingAction != null){
+            StopCoroutine(movingAction);
+            transform.position = tilemap.GetCellCenterWorld(cellToMoveTo);
+            isMoving = false;
+         } 
     }
 
     public bool CanMove(GameObject obj, bool allowOverlap = false){

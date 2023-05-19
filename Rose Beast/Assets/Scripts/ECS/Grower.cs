@@ -7,7 +7,7 @@ public class Grower : MonoBehaviour
     protected TileBound tile;
     public GameObject nextForm;
     public int growingAge;
-    public bool useSlider = true;
+    public bool useSlider = false;
 
     void Start()
     {

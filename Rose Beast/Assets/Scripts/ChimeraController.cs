@@ -84,14 +84,12 @@ public class ChimeraController : MonoBehaviour
             playerMovement.CanMove = false;
         }
 
-        /*
+        
         //complete movement on any other movers that aren't finished
-        //Causes movement to get real messed up tho
-        //TODO:
         Mover[] movers = FindObjectsOfType<Mover>();
         foreach(Mover mover in movers){
             mover.ForceCompleteMove();
-        }*/
+        }
 
         foreach(TileBound tile in FindObjectsOfType<TileBound>()){
             tile.UpdateAge();
@@ -105,7 +103,7 @@ public class ChimeraController : MonoBehaviour
         }
 
         //move all creatures
-        Mover[] movers = FindObjectsOfType<Mover>();
+        movers = FindObjectsOfType<Mover>();
         foreach(Mover mover in movers){
             mover.ExecuteMove();
         }

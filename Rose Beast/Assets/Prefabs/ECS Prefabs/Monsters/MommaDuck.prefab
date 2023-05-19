@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextForm: {fileID: 8706259981715885020, guid: eed60ee6cb9e5b349b22435c6e60d244, type: 3}
   growingAge: 20
-  useSlider: 1
+  useSlider: 0
 --- !u!1 &8706259982193507149
 GameObject:
   m_ObjectHideFlags: 0
