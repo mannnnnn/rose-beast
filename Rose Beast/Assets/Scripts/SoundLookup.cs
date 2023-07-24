@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SoundLookup", menuName = "ScriptableObjects/SoundLookup", order = 2)]
+[CreateAssetMenu(fileName = "SoundLookup", menuName = "Data/SoundLookup", order = 2)]
 public class SoundLookup : ScriptableObject
 {
     public List<Sound> sounds = new List<Sound>();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class Grower : MonoBehaviour
+public class Grower : Trait
 {
     protected TileBound tile;
     public GameObject nextForm;

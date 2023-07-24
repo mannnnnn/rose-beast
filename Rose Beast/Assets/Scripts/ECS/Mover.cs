@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
-public class Mover : MonoBehaviour {
+public class Mover : Trait
+{
 
     public MovementType movementType;
     public int tilesPerCycle;

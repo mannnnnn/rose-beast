@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class GlossaryButton : MonoBehaviour
 {
-   public GameObject GlossaryObject;
+   public GlossaryEntryText GlossaryObject;
    public Image GlossaryImage;
    
    private Glossary glossary;
    
-   public void Initialize(Glossary glossary, GameObject obj){
+   public void Initialize(Glossary glossary, GlossaryEntryText glossaryEntry){
         this.glossary = glossary;
-        this.name = obj.name + " - Glossary Button";
-        GlossaryObject = obj;
+        this.name = glossaryEntry.EntryName + " - Glossary Button";
+        GlossaryObject = glossaryEntry;
    }
 
    public void ShowPage(){

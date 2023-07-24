@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
-public class Attacker : MonoBehaviour
+public class Attacker : Trait
 {
     public int DamageAmt = 1;
     public int AttackRange = 1;

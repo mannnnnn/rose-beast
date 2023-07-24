@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0768df8eb0d960a45940cc931809c034, type: 3}
+  m_Name: GlossaryBook
+  m_EditorClassIdentifier: 
+  AllGlossaryEntryInfo:
+  - EntryName: Deer
+    EntryPrefab: {fileID: 8706259981715885020, guid: eec329f95555dbd4480cf7442fab353a, type: 3}
+    EntryDesc: A young fawn. Typically lives a short and happy life.
+  - EntryName: Defender
+    EntryPrefab: {fileID: 8706259981715885020, guid: 67bdda92f305d8d489a97afed015dc41, type: 3}
+    EntryDesc: Poorly trained citizens. They come from nearby settlements.
+  - EntryName: Duckling
+    EntryPrefab: {fileID: 8706259981715885020, guid: 33526966ca817144988750f0f66f7d7c, type: 3}
+    EntryDesc: A feeble creature. It follows its mother around, or makes due.
+  - EntryName: Godmother Duck
+    EntryPrefab: {fileID: 8706259981715885020, guid: eed60ee6cb9e5b349b22435c6e60d244, type: 3}
+    EntryDesc: A celestial bird. They follow a cycle of rebirth.
+  - EntryName: Hunter
+    EntryPrefab: {fileID: 8706259981715885020, guid: 08323a65340145a4a915d4fa59e26f99, type: 3}
+    EntryDesc: An armed citizen. They are the first to investigate the woods.
+  - EntryName: Keeper
+    EntryPrefab: {fileID: 8706259981715885020, guid: f9df6859add82024cb1c534d7dc05b6b, type: 3}
+    EntryDesc: An eldrich creature. Can bring good fortune, or ill.
+  - EntryName: Martyr
+    EntryPrefab: {fileID: 8706259981715885020, guid: 2c84aa811cd4d5e4b91b9a92aad28ff1, type: 3}
+    EntryDesc: A blessed citizen. Most steer clear of such beings.
+  - EntryName: Momma Duck
+    EntryPrefab: {fileID: 8706259981715885020, guid: 61c2aa4d3373b8e4eaddaf721d8991cb, type: 3}
+    EntryDesc: A matured duck. It wanders around, having few cares.
+  - EntryName: Poison Frog
+    EntryPrefab: {fileID: 8706259981715885020, guid: 9efe12ed326b8154aa642bff72384c7b, type: 3}
+    EntryDesc: A bog amphibian. It eats mushrooms and hangs around.
+  - EntryName: Stag
+    EntryPrefab: {fileID: 8706259981715885020, guid: 624ad8feaccdb2d40991947518a272be, type: 3}
+    EntryDesc: A matured deer. They defend the woods from unnatural things.
+  - EntryName: Vermin
+    EntryPrefab: {fileID: 8706259981715885020, guid: d36f933e9c5e21542b432eff621727b2, type: 3}
+    EntryDesc: A pitiful morsel. A staple of settlements and dungeons.
+  - EntryName: Wraith
+    EntryPrefab: {fileID: 8706259981715885020, guid: bc8db2ed2791edc49a52d10715491d3b, type: 3}
+    EntryDesc: An eldrich citizen. They remain divorced from society.
+  - EntryName: Citadel
+    EntryPrefab: {fileID: 5079019747351172551, guid: 9d4eb17621606bf44819f88f4b08d021, type: 3}
+    EntryDesc: A great fortress. It holds an important prisoner.
+  - EntryName: Deer Altar
+    EntryPrefab: {fileID: 5079019747351172551, guid: 18eb96b8a47401844ac8dff841b25e39, type: 3}
+    EntryDesc: An eldrich altar. Every now and then, the bones shift.
+  - EntryName: Hut
+    EntryPrefab: {fileID: 5079019747351172551, guid: 2cf13960ef1a8ee469160a0b91a49ca6, type: 3}
+    EntryDesc: A small structure. It's a well-maintained building, and could be called
+      a home.
+  - EntryName: Martyr Stones
+    EntryPrefab: {fileID: 5079019747351172551, guid: de20f754111517b4ab2f5d0dec61ead4, type: 3}
+    EntryDesc: A divine stone. It shakes the souls of those who near it.
+  - EntryName: Wraith Stones
+    EntryPrefab: {fileID: 5079019747351172551, guid: 20c60fd3b23000547a274f32212e38e3, type: 3}
+    EntryDesc: An eldrich stone. Voices can be heard from within.
+  - EntryName: Bog
+    EntryPrefab: {fileID: 1324394589593014515, guid: b40404bafaa6ca143990199f610c1771, type: 3}
+    EntryDesc: A swampy terrain. Small creatures dwell below the surface of the moist
+      ground.
+  - EntryName: Forest
+    EntryPrefab: {fileID: 1324394589593014515, guid: 87c50079e4b53ed459d740b563678b15, type: 3}
+    EntryDesc: A lush forest. The trees hide prying eyes from view.
+  - EntryName: Pond
+    EntryPrefab: {fileID: 1324394589593014515, guid: 2740c09f79d380a42936c5c596740837, type: 3}
+    EntryDesc: A small pond. A few sprigs of vegetation thrive at the edge of the
+      water.
+  - EntryName: Village
+    EntryPrefab: {fileID: 5079019747351172551, guid: 4e9930cd31e01284f88dbc9147339072, type: 3}
+    EntryDesc: A quaint settlement. People can be seen milling about here.
+  - EntryName: Meat
+    EntryPrefab: {fileID: 8706259981715885020, guid: de2fcb64e110b6d4e9f04cc3fe1d58d9, type: 3}
+    EntryDesc: A hefty portion. The flesh is vibrant.
+  - EntryName: Morsel
+    EntryPrefab: {fileID: 8706259981715885020, guid: 7aa3614b9f8a73d49943cf1362c67fe6, type: 3}
+    EntryDesc: A small scrap. It will suffice.
+  - EntryName: Mushrooms
+    EntryPrefab: {fileID: 8706259981715885020, guid: da7b1b60475adb24f94b570627fdf1f8, type: 3}
+    EntryDesc: A mushroom bunch. They thrive at the edges of waterfronts.

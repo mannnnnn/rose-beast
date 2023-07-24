@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class Eater : MonoBehaviour
+public class Eater : Trait
 {
     private int currentEXP = 0;
     public int expRequiredBase;

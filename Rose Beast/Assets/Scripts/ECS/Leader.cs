@@ -4,7 +4,8 @@ using UnityEngine.Tilemaps;
 using static Follower;
 
 [DisallowMultipleComponent]
-public class Leader : MonoBehaviour {
+public class Leader : Trait
+{
     /*
     Follows the Leader whenever it moves
     Follows by occupying the last space the Leader was in, or the last space the higher index follower was in

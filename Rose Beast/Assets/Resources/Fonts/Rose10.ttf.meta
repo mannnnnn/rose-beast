@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1edb93bd27d81344493fe26f4c0ba4a8
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 10
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Roses are FF0000
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: aa32f2748297c0a4da59310d3bc57b84, type: 3}
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

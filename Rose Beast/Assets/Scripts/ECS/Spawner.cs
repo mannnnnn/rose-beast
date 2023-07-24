@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Spawner : MonoBehaviour
+public class Spawner : Trait
 {
     private TileBound tile;
     private Tilemap tilemap;
     public int spawnEveryMultipleOf = 1;
     public GameObject spawn;
     public bool useSlider = true;
-    
 
     void Start()
     {

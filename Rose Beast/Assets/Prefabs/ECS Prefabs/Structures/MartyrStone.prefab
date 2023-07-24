@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 6011452287028441500}
   - component: {fileID: 4516711164822969886}
   m_Layer: 0
-  m_Name: MartyrStone 1
+  m_Name: MartyrStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

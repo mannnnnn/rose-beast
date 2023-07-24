@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
-public class Defender : MonoBehaviour
+public class Defender : Trait
 {
     public int CurrentHealth = 1;
     public int MaxHealth = 1;
